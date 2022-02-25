@@ -2,6 +2,9 @@ import QuestionTypeEnum from "../enums/QuestionTypeEnum";
 import {QuestionInterface} from "./QuestionInterface";
 import _ from 'lodash';
 
+import truths from '../assets/truths';
+import dares from '../assets/dares';
+
 export default class TruthOrDareModel extends QuestionInterface {
     type = QuestionTypeEnum.TRUTH_OR_DARE;
 
@@ -12,8 +15,8 @@ export default class TruthOrDareModel extends QuestionInterface {
     constructor() {
         super('Truth or Dare');
 
-        this.truth = 'This is Truth';
-        this.dare = 'Do you Dare';
+        this.truth = _.sample(truths);
+        this.dare = _.sample(dares);
     }
 
     selectQuestion(playerData) {

@@ -18,9 +18,9 @@
   </div>
 
   <div v-else class="text-center">
-    <h1 class="text-4xl font-bold font-google mb-2">{{ questionStore.currentQuestion.getTitle() }}</h1>
-    <h3 class="opacity-70 mb-8" v-if="chosen === 'truth'">{{ questionStore.currentQuestion.getTruth() }}</h3>
-    <h3 class="opacity-70 mb-8" v-else>{{ questionStore.currentQuestion.getDare() }}</h3>
+    <h1 class="text-4xl font-bold font-google mb-2">{{ locale(questionStore.currentQuestion.getTitle()) }}</h1>
+    <h3 class="opacity-70 mb-8" v-if="chosen === 'truth'">{{ locale(questionStore.currentQuestion.getTruth()) }}</h3>
+    <h3 class="opacity-70 mb-8" v-else>{{ locale(questionStore.currentQuestion.getDare()) }}</h3>
 
     <DrinkUpButton @click="handleQuestionEnd" v-if="questionStore.hasQuestionsLeft">
       Volgende vraag
@@ -37,6 +37,7 @@ import DrinkUpButton from "../DrinkUpButton.vue";
 import {usePlayerStore} from "../../store/players";
 import {useQuestionStore} from "../../store/question";
 import {NewspaperIcon, LightningBoltIcon} from "@heroicons/vue/outline"
+import filterMixin from "../../mixins/filterMixin";
 
 export default {
   name: 'Question',
@@ -46,6 +47,7 @@ export default {
       chosen: null
     }
   },
+  mixins: [filterMixin],
   components: {DrinkUpButton, NewspaperIcon, LightningBoltIcon},
   setup() {
     const playerStore = usePlayerStore();

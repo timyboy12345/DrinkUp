@@ -1,10 +1,7 @@
 <template>
   <div class="text-center flex flex-col items-center">
-    <h1 class="text-6xl mb-4" v-if="questionStore.currentQuestion.getEmoji()">
-      {{ questionStore.currentQuestion.getEmoji() }}
-    </h1>
     <h1 class="text-4xl font-bold font-google mb-2">{{ locale(questionStore.currentQuestion.getTitle()) }}</h1>
-    <h3 class="opacity-70 mb-8">{{ action }}</h3>
+    <h3 class="opacity-70 mb-8">{{ rule }}</h3>
 
     <DrinkUpButton @click="handleQuestionEnd" v-if="questionStore.hasQuestionsLeft">
       Volgende vraag
@@ -23,7 +20,7 @@ import {useQuestionStore} from "../../store/question";
 import filterMixin from "../../mixins/filterMixin";
 
 export default {
-  name: 'Question',
+  name: 'Rule',
   emits: ['finish'],
   components: {DrinkUpButton},
   mixins: [filterMixin],
@@ -43,9 +40,10 @@ export default {
       const playerId = this.questionStore.currentQuestion.getPlayerId();
       return this.playerStore.getPlayerById(playerId);
     },
-    action() {
-      let action = this.questionStore.currentQuestion.getAction();
+    rule() {
+      let action = this.questionStore.currentQuestion.getRule();
       action = this.locale(action);
+
       action = action.replace('%player_name%', this.playerName);
       return action;
     }

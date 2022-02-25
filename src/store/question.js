@@ -14,6 +14,26 @@ export const useQuestionStore = defineStore('questions', {
         getQuestions: (state) => state.questions,
         hasQuestionsLeft: (state) => state.questions.length >= 1,
         isInitialized: (state) => state.initialized,
+        isFinished: (state) => state.initialized && state.questions.length === 0 && !state.activeQuestion,
+        getTotalQuestions: (state) => {
+            let count = state.questions.length;
+            count += state.previousQuestions.length;
+
+            if (state.activeQuestion) {
+                count++;
+            }
+
+            return count;
+        },
+        getCurrentQuestion: (state) => {
+            let count = state.previousQuestions.length;
+
+            if (state.activeQuestion) {
+                count++;
+            }
+
+            return count;
+        }
     },
     actions: {
         addQuestion(question) {
