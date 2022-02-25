@@ -1,17 +1,13 @@
 import QuestionTypeEnum from "../enums/QuestionTypeEnum";
+import {QuestionInterface} from "./QuestionInterface";
 
-export default class QuestionModel {
+export default class QuestionModel extends QuestionInterface {
     question = null;
-    title = null;
     type = QuestionTypeEnum.SINGLE_QUESTION;
 
     constructor(title, question) {
-        this.title = title;
+        super(title);
         this.question = question;
-    }
-
-    getTitle() {
-        return this.title;
     }
 
     getQuestion() {

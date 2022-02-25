@@ -23,8 +23,11 @@ export const useQuestionStore = defineStore('questions', {
             this.previousQuestions.push(this.activeQuestion);
             this.activeQuestion = null;
         },
-        nextQuestion() {
+        nextQuestion(playerData) {
             this.activeQuestion = this.questions.pop();
+
+            switch (this.activeQuestion.getQuestionType) {}
+            this.activeQuestion.selectQuestion(playerData);
             return this.activeQuestion;
         },
         initQuestions(force = false) {

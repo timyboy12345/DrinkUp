@@ -2,10 +2,11 @@ import {defineStore} from "pinia";
 
 export const usePlayerStore = defineStore('players', {
     state: () => ({
-        players: ['Tim', 'Jaap', 'Jeroen']
+        players: ['Tim']
     }),
     getters: {
         getPlayers: (state) => state.players,
+        getPlayerById: (state) => (id) => state.players.find(p => p === id)
     },
     actions: {
         addPlayer(player) {

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-screen h-screen flex flex-col items-center justify-center">
+  <div class="mx-8 lg:mx-auto lg:max-w-4xl h-screen flex flex-col items-center justify-center">
     <div v-if="!questionStore.isInitialized">Vragen worden geladen...</div>
 
     <div class="text-center flex flex-col items-center"
@@ -17,18 +17,7 @@
     </div>
 
     <div v-if="questionStore.isInitialized && questionStore.currentQuestion" class="flex flex-col items-center">
-      <div class="text-center mb-8">
-        <h1 class="text-4xl font-bold font-google mb-2">{{ questionStore.currentQuestion.getTitle() }}</h1>
-        <h3 class="opacity-70">{{ questionStore.currentQuestion.getQuestion() }}</h3>
-      </div>
-
-      <DrinkUpButton @click="handleQuestionEnd" v-if="questionStore.hasQuestionsLeft">
-        Volgende vraag
-      </DrinkUpButton>
-
-      <DrinkUpButton @click="handleQuestionEnd" v-else>
-        Beïndig spel
-      </DrinkUpButton>
+      <component @finish="handleQuestionEnd" :is="componentName"></component>
     </div>
 
     <div v-if="questionStore.isInitialized && !questionStore.hasQuestionsLeft && !questionStore.currentQuestion"
@@ -58,13 +47,17 @@ import DrinkUpButton from "../components/DrinkUpButton.vue";
 import {usePlayerStore} from "../store/players";
 import {useQuestionStore} from "../store/question";
 import {mapActions} from "pinia";
+import QuestionTypeEnum from "../enums/QuestionTypeEnum";
+import TruthOrDare from '../components/Questions/TruthOrDare.vue';
+import Question from '../components/Questions/Question.vue';
+import Action from '../components/Questions/Action.vue';
 
 export default {
-  components: {DrinkUpButton},
+  components: {DrinkUpButton, TruthOrDare, Question, Action},
   methods: {
     ...mapActions(useQuestionStore, ['initQuestions', 'finishQuestion', 'nextQuestion']),
     loadNextQuestion() {
-      this.nextQuestion();
+      this.nextQuestion(this.playerStore.getPlayers);
     },
     handleQuestionEnd() {
       this.finishQuestion();
@@ -74,10 +67,6 @@ export default {
     }
   },
   created() {
-    // QuestionService.generateGame().then((questions) => {
-    //   console.log(questions);
-    //   this.questions = questions;
-    // });
     this.initQuestions();
   },
   setup() {
@@ -86,5 +75,21 @@ export default {
 
     return {playerStore, questionStore};
   },
+  computed: {
+    componentName() {
+      if (!this.questionStore.currentQuestion) {
+        return null;
+      }
+
+      switch (this.questionStore.currentQuestion.getQuestionType()) {
+        case QuestionTypeEnum.TRUTH_OR_DARE:
+          return 'truth-or-dare';
+        case QuestionTypeEnum.ACTION:
+          return 'action';
+        default:
+          return 'question';
+      }
+    }
+  }
 }
 </script>
