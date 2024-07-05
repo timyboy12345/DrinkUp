@@ -20,7 +20,8 @@
     <div class="absolute left-8 top-8">
       <div class="items-center font-google text-3xl font-bold">
         <TransitionGroup name="slide-up">
-          <div v-show="p.active" class="absolute flex flex-row items-center" :key="p.name" v-for="p in playerStore.players">
+          <div v-show="p.active" class="absolute flex flex-row items-center" :key="p.name"
+               v-for="p in playerStore.players">
             <div :class="[getPlayerBG(p.color)]"
                  class="transition duration-100 rounded w-8 h-8 mr-4"></div>
             {{ p.name }}
@@ -30,9 +31,17 @@
     </div>
   </div>
 
-  <div class="flex h-full w-full justify-center items-center mt-8 text-4xl font-bold font-google"
+  <div class="flex flex-col h-full w-full justify-center items-center gap-y-4"
        v-if="playerStore.players.length === 0">
-    GEEN SPELERS INGESTELD
+    <div class="text-4xl font-google font-bold">
+      Geen spelers gevonden
+    </div>
+
+    <div class="opacity-60">Je moet terug naar de homepagina om een spel te starten</div>
+
+    <DrinkUpButton type="white" to="/">
+      Terug naar de homepagina
+    </DrinkUpButton>
   </div>
 
   <div v-if="playerStore.players.length > 0" class="absolute flex flex-col justify-center items-center h-full w-full">
@@ -65,11 +74,15 @@
       <Transition name="rotate" appear>
         <div
             :class="[tileType(playerStore.getActivePlayer.position).border, tileType(playerStore.getActivePlayer.position).background]"
-            class="relative flex flex-col items-center p-4 z-10 border-4 bg-white rounded-lg w-80 h-2/3">
+            class="text-center relative flex flex-col items-center p-4 z-10 border-4 bg-white rounded-lg w-80 h-2/3">
 
-          <DrinkUpButton type="white" class="absolute bottom-8" @click="nextPlayer">
-            Volgende Speler
-          </DrinkUpButton>
+          <component @next-player="nextPlayer" @ready-for-next-player="readyForNextPlayer = true" :data="modalData" :is="cardComponentName"/>
+
+          <Transition name="fade">
+            <DrinkUpButton v-show="readyForNextPlayer" type="white" class="absolute bottom-8" @click="nextPlayer">
+              Volgende Speler
+            </DrinkUpButton>
+          </Transition>
         </div>
       </Transition>
     </div>
@@ -85,15 +98,36 @@ import {mapActions} from "pinia";
 import TruthOrDare from '../components/Questions/TruthOrDare.vue';
 import Action from '../components/Questions/Action.vue';
 import Rule from '../components/Questions/Rule.vue';
+import {BoardService} from '@/services';
+import CardTypeEnum from "@/enums/CardTypeEnum";
+import TruthOrDareComponent from "@/components/Board/TruthOrDareComponent.vue";
+import RuleComponent from "@/components/Board/RuleComponent.vue";
+import SurpriseComponent from "@/components/Board/SurpriseComponent.vue";
+import ChallengeComponent from "@/components/Board/ChallengeComponent.vue";
+import DrinkComponent from "@/components/Board/DrinkComponent.vue";
+import MiniGameComponent from "@/components/Board/MiniGameComponent.vue";
 
 export default {
-  components: {DrinkUpButton, TruthOrDare, Action, Rule},
+  components: {
+    DrinkUpButton,
+    TruthOrDare,
+    Action,
+    Rule,
+    TruthOrDareComponent,
+    RuleComponent,
+    SurpriseComponent,
+    ChallengeComponent,
+    DrinkComponent,
+    MiniGameComponent,
+  },
   data() {
     return {
       rows: 8,
       columns: 12,
       step: null,
-      rolled: null
+      rolled: null,
+      modalData: null,
+      readyForNextPlayer: false,
     }
   },
   created() {
@@ -110,6 +144,9 @@ export default {
   computed: {
     totalTiles() {
       return (2 * this.rows) + (2 * this.columns) - 4;
+    },
+    cardComponentName() {
+      return this.modalData.type.toLowerCase().replaceAll('_', '-') + '-component';
     }
   },
   methods: {
@@ -136,26 +173,26 @@ export default {
     },
     tileType(tile) {
       if (tile % 8 === 0 || tile % 15 === 0) {
-        return {type: 'mini-game', border: 'border-orange-700', background: 'bg-orange-500'};
+        return {type: CardTypeEnum.MINI_GAME, border: 'border-orange-700', background: 'bg-orange-500'};
       }
 
       if (tile % 6 === 0) {
-        return {type: 'challenge', border: 'border-blue-600', background: 'bg-blue-400'};
+        return {type: CardTypeEnum.CHALLENGE, border: 'border-blue-600', background: 'bg-blue-400'};
       }
 
       if (tile % 5 === 0 || tile % 7 === 0) {
-        return {type: 'truth-or-dare', border: 'border-red-700', background: 'bg-red-500'};
+        return {type: CardTypeEnum.TRUTH_OR_DARE, border: 'border-red-700', background: 'bg-red-500'};
       }
 
       if (tile % 9 === 0 || tile === 3) {
-        return {type: 'rule', border: 'border-green-700', background: 'bg-green-500'};
+        return {type: CardTypeEnum.RULE, border: 'border-green-700', background: 'bg-green-500'};
       }
 
       if (tile % 17 === 0) {
-        return {type: 'surprise', border: 'border-purple-700', background: 'bg-purple-500'};
+        return {type: CardTypeEnum.SURPRISE, border: 'border-purple-700', background: 'bg-purple-500'};
       }
 
-      return {type: 'drink', border: 'border-yellow-600', background: 'bg-yellow-400'};
+      return {type: CardTypeEnum.DRINK, border: 'border-yellow-600', background: 'bg-yellow-400'};
     },
     tileToNum(row, column) {
       if (row === 1) {
@@ -195,30 +232,16 @@ export default {
     rollDice() {
       this.step = 'rolled';
 
-      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-      const max = 7;
-      const min = 1;
-      const minCeil = Math.ceil(min);
-      const maxFloored = Math.floor(max);
-      // The maximum is exclusive and the minimum is inclusive
-      const rolled = Math.floor(Math.random() * (maxFloored - minCeil) + minCeil);
+      const rolled = BoardService.roll();
 
       this.rolled = rolled;
       this.setActivePlayerTile(rolled, this.totalTiles);
       console.info(`Rolled ${rolled}`);
 
       const tileType = this.tileType(this.playerStore.getActivePlayer.position);
-      console.info(tileType);
-      switch (tileType) {
-        case 'mini-game':
-        case 'challenge':
-        case 'truth-or-date':
-        case 'rule':
-        case 'surprise':
-        case 'drink':
-        default:
-          break;
-      }
+      console.info(`Requesting a ${tileType.type} card`);
+
+      this.modalData = BoardService.generateCard(tileType.type);
 
       setTimeout(() => {
         this.step = 'modal';
@@ -228,6 +251,7 @@ export default {
       this.$router.push('/');
     },
     nextPlayer() {
+      this.readyForNextPlayer = false;
       this.setNextPlayer();
       this.step = 'roll';
     }
@@ -238,7 +262,7 @@ export default {
 <style>
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s ease;
+  transition: opacity 0.3s ease;
 }
 
 .fade-enter-from,
@@ -253,7 +277,7 @@ export default {
 
 .rotate-enter-from,
 .rotate-leave-to {
-  transform: rotateY(60deg);
+  transform: rotateY(60deg) scale(0.8);
 }
 
 .slide-up-enter-active,

@@ -1,4 +1,4 @@
-import QuestionTypeEnum from "../enums/QuestionTypeEnum";
+import QuestionTypeEnum from "../../enums/QuestionTypeEnum";
 
 export class QuestionInterface {
     title = null;

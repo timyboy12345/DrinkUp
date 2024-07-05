@@ -9,7 +9,7 @@ export default [
     },
     {
         en: 'Open Facebook, go to the account of the first person you see, and like every post on their wall going back to a year.',
-        nl: 'Open Facebook, ga naar het account van de eerste persoon die je ziet en like alle posts to een jaar geleden.'
+        nl: 'Open Facebook, ga naar het account van de eerste persoon die je ziet en like alle posts tot een jaar geleden.'
     },
     {
         en: 'Call your crush.',

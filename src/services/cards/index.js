@@ -1,8 +1,8 @@
-import {ActionModel} from "../../models/ActionModel";
+import {ActionModel} from "@/models/Cards/ActionModel";
 import QuestionTypeEnum from "../../enums/QuestionTypeEnum";
-import TruthOrDareModel from "../../models/TruthOrDareModel";
+import TruthOrDareModel from "../../models/Cards/TruthOrDareModel";
 import _ from 'lodash';
-import {RuleModel} from "../../models/RuleModel";
+import {RuleModel} from "@/models/Cards/RuleModel";
 
 export default {
     /**

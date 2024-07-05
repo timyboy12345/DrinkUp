@@ -1,5 +1,5 @@
 import {defineStore} from "pinia";
-import {QuestionService} from "../services";
+import {CardsService} from "../services";
 
 export const useQuestionStore = defineStore('questions', {
     state: () => ({
@@ -54,7 +54,7 @@ export const useQuestionStore = defineStore('questions', {
             if (this.initialized === false || force) {
                 this.initialized = true;
 
-                QuestionService.generateGame().then((questions) => {
+                CardsService.generateGame().then((questions) => {
                     console.log(questions);
                     this.questions = questions;
                 });

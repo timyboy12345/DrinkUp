@@ -1,7 +1,7 @@
 import {QuestionInterface} from "./QuestionInterface";
-import QuestionTypeEnum from "../enums/QuestionTypeEnum";
+import QuestionTypeEnum from "../../enums/QuestionTypeEnum";
 import _ from 'lodash';
-import rules from '../assets/rules';
+import rules from '../../assets/rules';
 
 export class RuleModel extends QuestionInterface {
     type = QuestionTypeEnum.RULE;

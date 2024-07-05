@@ -1,7 +1,7 @@
 import {QuestionInterface} from "./QuestionInterface";
 import _ from 'lodash';
-import QuestionTypeEnum from "../enums/QuestionTypeEnum";
-import cards from '../assets/actions.js';
+import QuestionTypeEnum from "../../enums/QuestionTypeEnum";
+import cards from '../../assets/actions.js';
 
 export class ActionModel extends QuestionInterface {
     type = QuestionTypeEnum.ACTION;

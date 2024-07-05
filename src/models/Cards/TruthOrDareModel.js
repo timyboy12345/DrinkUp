@@ -1,9 +1,9 @@
-import QuestionTypeEnum from "../enums/QuestionTypeEnum";
+import QuestionTypeEnum from "../../enums/QuestionTypeEnum";
 import {QuestionInterface} from "./QuestionInterface";
 import _ from 'lodash';
 
-import truths from '../assets/truths';
-import dares from '../assets/dares';
+import truths from '../../assets/truths';
+import dares from '../../assets/dares';
 
 export default class TruthOrDareModel extends QuestionInterface {
     type = QuestionTypeEnum.TRUTH_OR_DARE;

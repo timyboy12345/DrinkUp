@@ -15,6 +15,7 @@ app.use(router)
 
 app.use(createPinia());
 
+// TODO: Remove Axios
 app.use(VueAxios, axios)
 axios.defaults.baseURL = 'https://parkscape-api.arendz.workers.dev';
 

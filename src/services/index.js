@@ -1,7 +1,7 @@
-import StarService from './starservice';
-import QuestionService from './questionService';
+import CardsService from './cards';
+import BoardService from './board';
 
 export {
-    StarService,
-    QuestionService
+    CardsService,
+    BoardService,
 }
