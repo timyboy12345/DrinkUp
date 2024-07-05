@@ -10,7 +10,7 @@
             <div>{{ header }}</div>
 
             <div :class="{'opacity-20': !canClose}" class="cursor-pointer rounded border border-gray-200 hover:bg-gray-100 transition duration-100" @click="handleModalClose">
-              <XIcon class="w-4 h-4 m-2"/>
+              <XMarkIcon class="w-4 h-4 m-2"/>
             </div>
           </div>
         </slot>
@@ -26,11 +26,11 @@
 </template>
 
 <script>
-import {XIcon} from "@heroicons/vue/outline"
+import {XMarkIcon} from "@heroicons/vue/24/outline"
 
 export default {
   name: 'GenericModal',
-  components: {XIcon},
+  components: {XMarkIcon},
   data() {
     return {
       escapeListener: null

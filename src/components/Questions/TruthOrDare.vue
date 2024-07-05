@@ -11,7 +11,7 @@
       </DrinkUpButton>
 
       <DrinkUpButton @click="handleChooseDare">
-        <LightningBoltIcon class="w-6 h-6 mr-2"/>
+        <BoltIcon class="w-6 h-6 mr-2"/>
         Dare
       </DrinkUpButton>
     </div>
@@ -34,9 +34,9 @@
 
 <script>
 import DrinkUpButton from "../DrinkUpButton.vue";
-import {usePlayerStore} from "../../store/players";
-import {useQuestionStore} from "../../store/question";
-import {NewspaperIcon, LightningBoltIcon} from "@heroicons/vue/outline"
+import {usePlayerStore} from "@/store/players";
+import {useQuestionStore} from "@/store/question";
+import {NewspaperIcon, BoltIcon} from "@heroicons/vue/24/outline"
 import filterMixin from "../../mixins/filterMixin";
 
 export default {
@@ -48,7 +48,7 @@ export default {
     }
   },
   mixins: [filterMixin],
-  components: {DrinkUpButton, NewspaperIcon, LightningBoltIcon},
+  components: {DrinkUpButton, NewspaperIcon, BoltIcon},
   setup() {
     const playerStore = usePlayerStore();
     const questionStore = useQuestionStore();

@@ -5,7 +5,7 @@
       <h3 class="opacity-70 mb-8">Maakt je avond een stuk gezelliger!</h3>
 
       <p class="mb-8 opacity-80">
-        Voer hieronder de namen van je vrienden in en start het spel!
+        Voer hieronder de namen van je vrienden in en start een spel!
       </p>
 
       <div class="text-left flex flex-col mb-8">
@@ -17,29 +17,42 @@
         <ul class="mt-4 flex flex-col gap-y-2" v-if="playerStore.getPlayers.length > 0">
           <li v-for="player of playerStore.getPlayers">
             <div class="flex flex-row">
-              <XIcon @click="handleRemovePlayer(player)" class="transition duration-100 p-1 w-6 h-6 rounded bg-amber-600 mr-2 cursor-pointer opacity-50 hover:opacity-100"></XIcon>
-              {{ player }}
+              <XMarkIcon @click="handleRemovePlayer(player.name)" class="transition duration-100 p-1 w-6 h-6 rounded bg-amber-600 mr-2 cursor-pointer opacity-50 hover:opacity-100"></XMarkIcon>
+              {{ player.name }}
             </div>
           </li>
         </ul>
       </div>
 
-      <DrinkUpButton to="/game" :disabled="playerStore.getPlayers.length === 0">
-        <user-icon class="w-6 h-6 mr-2"/>
-        Doorgaan met {{ playerStore.getPlayers.length }} spelers
-      </DrinkUpButton>
+      <div class="flex flex-col">
+        <div class="text-sm opacity-60 mb-2">
+          Je speelt een spel met {{ playerStore.getPlayers.length }} spelers.
+        </div>
+
+        <div class="flex items-center gap-4">
+          <DrinkUpButton to="/game" :disabled="playerStore.getPlayers.length === 0">
+            <BookmarkIcon class="w-6 h-6 mr-2"/>
+            Kaartspel
+          </DrinkUpButton>
+
+          <DrinkUpButton to="/board" :disabled="playerStore.getPlayers.length === 0">
+            <LifebuoyIcon class="w-6 h-6 mr-2"/>
+            Bordspel
+          </DrinkUpButton>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import DrinkUpButton from "../components/DrinkUpButton.vue";
-import {XIcon, UserIcon} from "@heroicons/vue/outline"
-import {usePlayerStore} from "../store/players";
+import {UserIcon, BookmarkIcon, XMarkIcon, LifebuoyIcon} from "@heroicons/vue/24/outline";
+import {usePlayerStore} from "@/store/players";
 import {mapActions} from "pinia";
 
 export default {
-  components: {DrinkUpButton, UserIcon, XIcon},
+  components: {DrinkUpButton, BookmarkIcon, UserIcon, XMarkIcon, LifebuoyIcon},
   data() {
     return {
       playerName: ''

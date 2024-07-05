@@ -7,7 +7,7 @@
     "preview": "vite preview --port 5050"
   },
   "dependencies": {
-    "@heroicons/vue": "^1.0.5",
+    "@heroicons/vue": "^2.1.4",
     "axios": "^0.26.0",
     "jenesius-vue-modal": "^1.5.0",
     "leaflet": "^1.7.1",

@@ -1,0 +1,273 @@
+<template>
+  <div v-if="playerStore.players.length > 0" class="absolute flex flex-col justify-center items-center h-full w-full">
+    <div :key="x" class="flex flex-row" v-for="x in rows">
+      <div :key="y" class="flex flex-col" v-for="y in columns">
+        <div :class="[rowColumnType(x, y).background]"
+             class="flex items-center justify-center relative m-1 w-14 h-14 rounded shadow">
+          <div class="absolute left-1 top-1 text-xs opacity-60" v-if="gameStore.getDevelopment">{{ x }} / {{ y }}</div>
+
+          <div class="absolute opacity-70 font-bold">{{ tileToNum(x, y) }}</div>
+
+          <div class="grid grid-cols-2 absolute top-2 left-2 gap-2">
+            <div class="rounded w-4 h-4" :class="[getPlayerBG(p.color)]"
+                 v-for="p in playerStore.getPlayersForTile(tileToNum(x, y))">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute left-8 top-8">
+      <div class="items-center font-google text-3xl font-bold">
+        <TransitionGroup name="slide-up">
+          <div v-show="p.active" class="absolute flex flex-row items-center" :key="p.name" v-for="p in playerStore.players">
+            <div :class="[getPlayerBG(p.color)]"
+                 class="transition duration-100 rounded w-8 h-8 mr-4"></div>
+            {{ p.name }}
+          </div>
+        </TransitionGroup>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex h-full w-full justify-center items-center mt-8 text-4xl font-bold font-google"
+       v-if="playerStore.players.length === 0">
+    GEEN SPELERS INGESTELD
+  </div>
+
+  <div v-if="playerStore.players.length > 0" class="absolute flex flex-col justify-center items-center h-full w-full">
+    <div class="flex gap-x-8 items-center" v-if="step === 'roll'">
+      <div class="flex flex-row items-center">
+        <div :class="[getPlayerBG(playerStore.getActivePlayer.color)]" class="rounded w-8 h-8"></div>
+        <div class="font-google text-md ml-2">{{ playerStore.getActivePlayer.name }}</div>
+      </div>
+
+      <DrinkUpButton @click="rollDice">
+        Rollen
+      </DrinkUpButton>
+    </div>
+
+    <div v-if="step === 'rolled'" class="text-2xl font-google">
+      {{ rolled ?? 'X' }} Gerold
+    </div>
+  </div>
+
+  <div class="absolute left-4 bottom-4 text-xs opacity-40 hover:opacity-100 cursor-pointer transition duration-100"
+       @click="cancelGame">
+    Stop spel
+  </div>
+
+  <Transition name="fade">
+    <div class="absolute flex flex-col items-center justify-center z-10 left-0 top-0 w-full h-full"
+         v-if="step === 'modal'">
+      <div class="absolute w-full h-full bg-black bg-opacity-70"></div>
+
+      <Transition name="rotate" appear>
+        <div
+            :class="[tileType(playerStore.getActivePlayer.position).border, tileType(playerStore.getActivePlayer.position).background]"
+            class="relative flex flex-col items-center p-4 z-10 border-4 bg-white rounded-lg w-80 h-2/3">
+
+          <DrinkUpButton type="white" class="absolute bottom-8" @click="nextPlayer">
+            Volgende Speler
+          </DrinkUpButton>
+        </div>
+      </Transition>
+    </div>
+  </Transition>
+</template>
+
+<script>
+import DrinkUpButton from "../components/DrinkUpButton.vue";
+import {usePlayerStore} from "@/store/players";
+import {useQuestionStore} from "@/store/question";
+import {useGameStore} from "@/store/game";
+import {mapActions} from "pinia";
+import TruthOrDare from '../components/Questions/TruthOrDare.vue';
+import Action from '../components/Questions/Action.vue';
+import Rule from '../components/Questions/Rule.vue';
+
+export default {
+  components: {DrinkUpButton, TruthOrDare, Action, Rule},
+  data() {
+    return {
+      rows: 8,
+      columns: 12,
+      step: null,
+      rolled: null
+    }
+  },
+  created() {
+    this.initBoardGame();
+    this.step = 'roll';
+  },
+  setup() {
+    const playerStore = usePlayerStore();
+    const questionStore = useQuestionStore();
+    const gameStore = useGameStore();
+
+    return {playerStore, questionStore, gameStore};
+  },
+  computed: {
+    totalTiles() {
+      return (2 * this.rows) + (2 * this.columns) - 4;
+    }
+  },
+  methods: {
+    ...mapActions(usePlayerStore, ['initBoardGame', 'setActivePlayerTile', 'setNextPlayer']),
+    loadNextQuestion() {
+      this.nextQuestion(this.playerStore.getPlayers);
+    },
+    handleQuestionEnd() {
+      this.finishQuestion();
+    },
+    resetGame() {
+      this.initQuestions(true);
+    },
+    shouldShow(row, column) {
+      return (row === 1 || row === this.rows) || (column === 1 || column === this.columns);
+    },
+    rowColumnType(row, column) {
+      if (!this.shouldShow(row, column)) {
+        return {background: 'opacity-0'};
+      }
+
+      const num = this.tileToNum(row, column);
+      return this.tileType(num);
+    },
+    tileType(tile) {
+      if (tile % 8 === 0 || tile % 15 === 0) {
+        return {type: 'mini-game', border: 'border-orange-700', background: 'bg-orange-500'};
+      }
+
+      if (tile % 6 === 0) {
+        return {type: 'challenge', border: 'border-blue-600', background: 'bg-blue-400'};
+      }
+
+      if (tile % 5 === 0 || tile % 7 === 0) {
+        return {type: 'truth-or-dare', border: 'border-red-700', background: 'bg-red-500'};
+      }
+
+      if (tile % 9 === 0 || tile === 3) {
+        return {type: 'rule', border: 'border-green-700', background: 'bg-green-500'};
+      }
+
+      if (tile % 17 === 0) {
+        return {type: 'surprise', border: 'border-purple-700', background: 'bg-purple-500'};
+      }
+
+      return {type: 'drink', border: 'border-yellow-600', background: 'bg-yellow-400'};
+    },
+    tileToNum(row, column) {
+      if (row === 1) {
+        return column;
+      }
+
+      if (row === this.rows) {
+        return this.rows + this.columns + (this.columns - column - 1);
+      }
+
+      if (column === this.columns) {
+        return this.columns + row - 1;
+      }
+
+      if (column === 1) {
+        return (this.rows * 2) + this.columns + (this.rows - row + 2);
+      }
+
+      return -1;
+    },
+    getPlayerBG(color) {
+      switch (color) {
+        case 'red':
+          return 'bg-red-600';
+        case 'blue':
+          return 'bg-blue-800';
+        case 'green':
+          return 'bg-green-600';
+        case 'purple':
+          return 'bg-purple-600';
+        case 'black':
+          return 'bg-black';
+        default:
+          return 'bg-white';
+      }
+    },
+    rollDice() {
+      this.step = 'rolled';
+
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+      const max = 7;
+      const min = 1;
+      const minCeil = Math.ceil(min);
+      const maxFloored = Math.floor(max);
+      // The maximum is exclusive and the minimum is inclusive
+      const rolled = Math.floor(Math.random() * (maxFloored - minCeil) + minCeil);
+
+      this.rolled = rolled;
+      this.setActivePlayerTile(rolled, this.totalTiles);
+      console.info(`Rolled ${rolled}`);
+
+      const tileType = this.tileType(this.playerStore.getActivePlayer.position);
+      console.info(tileType);
+      switch (tileType) {
+        case 'mini-game':
+        case 'challenge':
+        case 'truth-or-date':
+        case 'rule':
+        case 'surprise':
+        case 'drink':
+        default:
+          break;
+      }
+
+      setTimeout(() => {
+        this.step = 'modal';
+      }, 2000);
+    },
+    cancelGame() {
+      this.$router.push('/');
+    },
+    nextPlayer() {
+      this.setNextPlayer();
+      this.step = 'roll';
+    }
+  },
+}
+</script>
+
+<style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.rotate-enter-active,
+.rotate-leave-active {
+  transition: transform 0.5s ease;
+}
+
+.rotate-enter-from,
+.rotate-leave-to {
+  transform: rotateY(60deg);
+}
+
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 0.25s ease-out;
+}
+
+.slide-up-enter-from {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+</style>
