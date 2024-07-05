@@ -31,7 +31,7 @@ export default {
 
 <template>
   <div class="flex flex-col items-center justify-center w-full h-full">
-    <div class="text-6xl mb-4">
+    <div class="text-6xl mb-4" v-if="data.challenge.emoji">
       {{ data.challenge.emoji }}
     </div>
 

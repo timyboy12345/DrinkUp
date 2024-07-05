@@ -69,7 +69,7 @@ export default {
   computed: {
     playerName() {
       const playerId = this.questionStore.currentQuestion.getPlayerId();
-      return this.playerStore.getPlayerById(playerId);
+      return this.playerStore.getPlayerById(playerId).name;
     }
   }
 }

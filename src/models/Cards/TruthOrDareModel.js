@@ -20,7 +20,7 @@ export default class TruthOrDareModel extends QuestionInterface {
     }
 
     selectQuestion(playerData) {
-        this.setPlayerId(_.sample(playerData));
+        this.setPlayerId(_.sample(playerData).name);
     }
 
     getTruth() {

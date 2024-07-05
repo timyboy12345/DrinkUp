@@ -32,9 +32,9 @@ export default {
 
 <template>
   <div class="flex flex-col items-center justify-center w-full h-full">
-    <!--  <div class="font-google text-sm mb-8">Doen/Durven of de Waarheid</div>-->
-
     <div v-if="!choice">
+      <div class="font-google text-4xl font-bold mb-8">Doen, durven of de waarheid</div>
+
       <div class="grid grid-cols gap-4">
         <DrinkUpButton @click="choose('dare')" type="white">Doen/Durven</DrinkUpButton>
         <DrinkUpButton @click="choose('truth')" type="white">Waarheid</DrinkUpButton>

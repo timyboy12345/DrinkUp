@@ -9,6 +9,7 @@ export class RuleCard extends CardInterface {
     constructor() {
         super();
 
+        // TODO: Fully implement rules
         this.rule = _.sample(rules);
     }
 }

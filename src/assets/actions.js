@@ -12,7 +12,7 @@ export default [
         "type": "Default"
     },
     {
-        "emoji": "🏃‍♂️",
+        "emoji": "🏃‍",
         "title": {
             en: 'Catch Up!',
             nl: 'Inhaalslag!'
@@ -267,377 +267,747 @@ export default [
         },
         "type": "Challenge",
         has_player: true
-    },
-    {
+    },{
         "emoji": "👶",
-        "title": "Aww isn't he cute?",
-        "desc": "The youngest player drinks",
+        "title": {
+            en: "Aww isn't he cute?",
+            nl: "Aww, is hij niet schattig?"
+        },
+        "desc": {
+            en: "The youngest player drinks",
+            nl: "De jongste speler moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "🎥",
-        "title": "Don't Forget To Susbcribe",
-        "desc": "%player_name% must share a screenshot of their recommended videos (YouTube, Netflix, etc.) or finishes their drink",
+        "title": {
+            en: "Don't Forget To Subscribe",
+            nl: "Vergeet niet te abonneren"
+        },
+        "desc": {
+            en: "%player_name% must share a screenshot of their recommended videos (YouTube, Netflix, etc.) or finishes their drink",
+            nl: "%player_name% moet een screenshot delen van hun aanbevolen video's (YouTube, Netflix, etc.) of hun drankje opdrinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "😳",
-        "title": "Embarassing...",
-        "desc": "%player_name% must post whatever the other players decide or finishes their drink",
+        "title": {
+            en: "Embarassing...",
+            nl: "Gênant..."
+        },
+        "desc": {
+            en: "%player_name% must post whatever the other players decide or finishes their drink",
+            nl: "%player_name% moet posten wat de andere spelers beslissen of hun drankje opdrinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "✋",
-        "title": "Hands Up",
-        "desc": "%player_name% must take a drink without using their hands",
+        "title": {
+            en: "Hands Up",
+            nl: "Handen omhoog"
+        },
+        "desc": {
+            en: "%player_name% must take a drink without using their hands",
+            nl: "%player_name% moet drinken zonder hun handen te gebruiken"
+        },
         "type": "Default"
     },
     {
         "emoji": "👽",
-        "title": "Conspiracy or Real?",
-        "desc": "%player_name% explains a conspiracy theory they believe in, otherwise they drink",
+        "title": {
+            en: "Conspiracy or Real?",
+            nl: "Complottheorie of echt?"
+        },
+        "desc": {
+            en: "%player_name% explains a conspiracy theory they believe in, otherwise they drink",
+            nl: "%player_name% legt een complottheorie uit waar ze in geloven, anders moeten ze drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "🐒",
-        "title": "Pull That Up Jaime",
-        "desc": "Everybody names the podcasts that they listen to, whoever listens to the most drinks",
+        "title": {
+            en: "Pull That Up Jaime",
+            nl: "Zet dat eens op, Jaime"
+        },
+        "desc": {
+            en: "Everybody names the podcasts that they listen to, whoever listens to the most drinks",
+            nl: "Iedereen noemt de podcasts waar ze naar luisteren, wie naar de meeste luistert moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "🦧",
-        "title": "Thats Crazy... Have You Tried DMT?",
-        "desc": "Everybody names the podcasts that they listen to, whoever listens to the least drinks",
+        "title": {
+            en: "Thats Crazy... Have You Tried DMT?",
+            nl: "Dat is gek... Heb je DMT geprobeerd?"
+        },
+        "desc": {
+            en: "Everybody names the podcasts that they listen to, whoever listens to the least drinks",
+            nl: "Iedereen noemt de podcasts waar ze naar luisteren, wie naar de minste luistert moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "🧹",
-        "title": "Nice Place",
-        "desc": "Whoever has the cleanest room drinks (share pictures if possible)",
+        "title": {
+            en: "Nice Place",
+            nl: "Mooie plek"
+        },
+        "desc": {
+            en: "Whoever has the cleanest room drinks (share pictures if possible)",
+            nl: "Wie de schoonste kamer heeft moet drinken (deel foto's indien mogelijk)"
+        },
         "type": "Default"
     },
     {
         "emoji": "🗑",
-        "title": "How Can You Live Like This?",
-        "desc": "Whoever has the messiest room drinks (share pictures if possible)",
+        "title": {
+            en: "How Can You Live Like This?",
+            nl: "Hoe kun je zo leven?"
+        },
+        "desc": {
+            en: "Whoever has the messiest room drinks (share pictures if possible)",
+            nl: "Wie de rommeligste kamer heeft moet drinken (deel foto's indien mogelijk)"
+        },
         "type": "Default"
     },
     {
         "emoji": "💅",
-        "title": "Girl Power",
-        "desc": "Every girl drinks!",
+        "title": {
+            en: "Girl Power",
+            nl: "Girl Power"
+        },
+        "desc": {
+            en: "Every girl drinks!",
+            nl: "Alle vrouwen moeten drinken!"
+        },
         "type": "Default"
     },
     {
         "emoji": "👨",
-        "title": "Bro Time",
-        "desc": "Every dude drinks!",
+        "title": {
+            en: "Bro Time",
+            nl: "Bro Time"
+        },
+        "desc": {
+            en: "Every dude drinks!",
+            nl: "Alle mannen moeten drinken!"
+        },
         "type": "Default"
     },
     {
         "emoji": "🥖",
-        "title": "Parlez Vous Francais?",
-        "desc": "%player_name% must attempt a French accent or finish their drink",
+        "title": {
+            en: "Parlez Vous Francais?",
+            nl: "Parlez Vous Francais?"
+        },
+        "desc": {
+            en: "%player_name% must attempt a French accent or finish their drink",
+            nl: "%player_name% moet een Frans accent nadoen, of zijn drankje atten"
+        },
         "type": "Default"
     },
     {
         "emoji": "☕",
-        "title": "Chewsday Innit?",
-        "desc": "%player_name% must attempt a British accent or finish their drink",
+        "title": {
+            en: "Chewsday Innit?",
+            nl: "Chewsday Innit?"
+        },
+        "desc": {
+            en: "%player_name% must attempt a British accent or finish their drink",
+            nl: "%player_name% moet een Brits accent opzetten, of zijn drankje atten"
+        },
         "type": "Default"
     },
     {
         "emoji": "🎭",
-        "title": "Funguy",
-        "desc": "%player_name% tries to make any other player laugh, if they're unsuccesful they take a drink, any player who laughs drinks",
+        "title": {
+            en: "Funguy",
+            nl: "Grappenmaker"
+        },
+        "desc": {
+            en: "%player_name% tries to make any other player laugh, if they're unsuccessful they take a drink, any player who laughs drinks",
+            nl: "%player_name% probeert een andere speler aan het lachen te maken, als ze niet slagen nemen ze een slok, elke speler die lacht moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "🎤",
-        "title": "Karaoke Night",
-        "desc": "Everybody sings a song together and takes a drink afterwards",
+        "title": {
+            en: "Karaoke Night",
+            nl: "Karaoke-avond"
+        },
+        "desc": {
+            en: "Everybody sings a song together and takes a drink afterwards",
+            nl: "Iedereen zingt samen een lied en neemt daarna een slok"
+        },
         "type": "Default"
     },
     {
         "emoji": "🎰",
-        "title": "Jackpot",
-        "desc": "Everybody but %player_name% drinks",
+        "title": {
+            en: "Jackpot",
+            nl: "Jackpot"
+        },
+        "desc": {
+            en: "Everybody but %player_name% drinks",
+            nl: "Iedereen behalve %player_name% drinkt"
+        },
         "type": "Default"
     },
     {
         "emoji": "🩹",
-        "title": "Scarred For Life",
-        "desc": "%player_name% shares a scar / injury story, otherwise they drink",
+        "title": {
+            en: "Scarred For Life",
+            nl: "Voor het leven getekend"
+        },
+        "desc": {
+            en: "%player_name% shares a scar / injury story, otherwise they drink",
+            nl: "%player_name% deelt een litteken / blessure verhaal, anders moeten ze drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "🚬",
-        "title": "Got a Light?",
-        "desc": "Everybody who regularly smokes drinks",
+        "title": {
+            en: "Got a Light?",
+            nl: "Heb je vuur?"
+        },
+        "desc": {
+            en: "Everybody who regularly smokes drinks",
+            nl: "Iedereen die regelmatig rookt moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "👓",
-        "title": "4-Eyes",
-        "desc": "Everybody who's wearing glasses drinks",
+        "title": {
+            en: "4-Eyes",
+            nl: "Brillenjanssen"
+        },
+        "desc": {
+            en: "Everybody who's wearing glasses drinks",
+            nl: "Iedereen die een bril draagt moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "🎮",
-        "title": "Epic Gamer Move",
-        "desc": "Whoever owns an RGB keyboard or mouse drinks",
+        "title": {
+            en: "Epic Gamer Move",
+            nl: "Epische Gamer Actie"
+        },
+        "desc": {
+            en: "Whoever owns an RGB keyboard or mouse drinks",
+            nl: "Wie een RGB-toetsenbord of -muis bezit moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "🍎",
-        "title": "Fan Boy",
-        "desc": "Whoever owns the most Apple products drinks",
+        "title": {
+            en: "Fan Boy",
+            nl: "Fan Boy"
+        },
+        "desc": {
+            en: "Whoever owns the most Apple products drinks",
+            nl: "Wie de meeste Apple-producten bezit moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "🌏",
-        "title": "Well Travelled",
-        "desc": "The player who has visited the most countries drinks",
+        "title": {
+            en: "Well Travelled",
+            nl: "Bereisd"
+        },
+        "desc": {
+            en: "The player who has visited the most countries drinks",
+            nl: "De speler die de meeste landen heeft bezocht moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "🧭",
-        "title": "Survivalist",
-        "desc": "Everybody must agree on which player would be the best at surviving in the wilderness, that player drinks",
+        "title": {
+            en: "Survivalist",
+            nl: "Overlevingsexpert"
+        },
+        "desc": {
+            en: "Everybody must agree on which player would be the best at surviving in the wilderness, that player drinks",
+            nl: "Iedereen moet het eens worden over welke speler het beste zou overleven in de wildernis, die speler drinkt"
+        },
         "type": "Default"
     },
     {
         "emoji": "🛏",
-        "title": "Sleepy Head",
-        "desc": "Whichever player sleeps in the longest, on average, drinks",
+        "title": {
+            en: "Sleepy Head",
+            nl: "Slaapkop"
+        },
+        "desc": {
+            en: "Whichever player sleeps in the longest, on average, drinks",
+            nl: "De speler die gemiddeld het langst uitslaapt moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "👗",
-        "title": "Well Dressed",
-        "desc": "Everybody must agree on which player is the most well dressed, they drink",
+        "title": {
+            en: "Well Dressed",
+            nl: "Goed gekleed"
+        },
+        "desc": {
+            en: "Everybody must agree on which player is the most well dressed, they drink",
+            nl: "Iedereen moet het eens worden over welke speler het best gekleed is, die speler drinkt"
+        },
         "type": "Default"
     },
     {
         "emoji": "💪",
-        "title": "Are You Ready To Rumble?",
-        "desc": "%player_name% chooses an opponent to arm wrestle, loser drinks",
+        "title": {
+            en: "Are You Ready To Rumble?",
+            nl: "Ben je klaar om te rommelen?"
+        },
+        "desc": {
+            en: "%player_name% chooses an opponent to arm wrestle, loser drinks",
+            nl: "%player_name% kiest een tegenstander om arm te worstelen, de verliezer drinkt"
+        },
         "type": "Default"
     },
     {
         "emoji": "💡",
-        "title": "Inventor",
-        "desc": "%player_name% must come up with a product that they must attempt to 'sell' to the other players, if they're unsuccessful they must drink",
+        "title": {
+            en: "Inventor",
+            nl: "Uitvinder"
+        },
+        "desc": {
+            en: "%player_name% must come up with a product that they must attempt to 'sell' to the other players, if they're unsuccessful they must drink",
+            nl: "%player_name% moet een product bedenken dat ze moeten proberen te 'verkopen' aan de andere spelers, als ze niet slagen moeten ze drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "👟",
-        "title": "Sneakerhead",
-        "desc": "The player wearing the most expensive shoes in the group drinks",
+        "title": {
+            en: "Sneakerhead",
+            nl: "Sneakerfanaat"
+        },
+        "desc": {
+            en: "The player wearing the most expensive shoes in the group drinks",
+            nl: "De speler die de duurste schoenen in de groep draagt moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "🐶",
-        "title": "Who's a Good Boy?",
-        "desc": "The player with the cutest pet drinks (share pictures if possible)",
+        "title": {
+            en: "Who's a Good Boy?",
+            nl: "Wie is er braaf?"
+        },
+        "desc": {
+            en: "The player with the cutest pet drinks (share pictures if possible)",
+            nl: "De speler met het schattigste huisdier moet drinken (deel foto's indien mogelijk)"
+        },
         "type": "Default"
     },
     {
         "emoji": "🚓",
-        "title": "Woop Woop",
-        "desc": "Everybody who's ever gotten arrested drinks",
+        "title": {
+            en: "Woop Woop",
+            nl: "Woop Woop"
+        },
+        "desc": {
+            en: "Everybody who's ever gotten arrested drinks",
+            nl: "Iedereen die ooit is gearresteerd moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "🌪",
-        "title": "Watch Out!",
-        "desc": "Any player who's lived through a natural disaster drinks",
+        "title": {
+            en: "Watch Out!",
+            nl: "Kijk uit!"
+        },
+        "desc": {
+            en: "Any player who's lived through a natural disaster drinks",
+            nl: "Elke speler die een natuurramp heeft meegemaakt moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "🚌",
-        "title": "Good Citizen",
-        "desc": "Whichever player takes public transportation most frequently drinks",
+        "title": {
+            en: "Good Citizen",
+            nl: "Goede burger"
+        },
+        "desc": {
+            en: "Whichever player takes public transportation most frequently drinks",
+            nl: "De speler die het vaakst met het openbaar vervoer reist moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "🚗",
-        "title": "Can't be asked tbh",
-        "desc": "Whichever player drives the most drinks",
+        "title": {
+            en: "Can't be asked tbh",
+            nl: "Geen zin, eerlijk gezegd"
+        },
+        "desc": {
+            en: "Whichever player drives the most drinks",
+            nl: "De speler die het meest rijdt moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "🎌",
-        "title": "Domo Arigato",
-        "desc": "%player_name% must attempt a Japanese accent or finish their drink",
+        "title": {
+            en: "Domo Arigato",
+            nl: "Domo Arigato"
+        },
+        "desc": {
+            en: "%player_name% must attempt a Japanese accent or finish their drink",
+            nl: "%player_name% moet een Japans accent proberen of hun drankje opdrinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "💃",
-        "title": "Muy Bien",
-        "desc": "%player_name% must attempt a Spanish accent or finish their drink",
+        "title": {
+            en: "Muy Bien",
+            nl: "Muy Bien"
+        },
+        "desc": {
+            en: "%player_name% must attempt a Spanish accent or finish their drink",
+            nl: "%player_name% moet een Spaans accent proberen of hun drankje opdrinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "✌",
-        "title": "Rock Paper Scissors",
-        "desc": "%player_name% challenges another player to a game of Rock Paper Scissors, loser drinks",
+        "title": {
+            en: "Rock Paper Scissors",
+            nl: "Steen Papier Schaar"
+        },
+        "desc": {
+            en: "%player_name% challenges another player to a game of Rock Paper Scissors, loser drinks",
+            nl: "%player_name% daagt een andere speler uit voor een potje Steen Papier Schaar, de verliezer drinkt"
+        },
         "type": "Default"
     },
     {
         "emoji": "🧦",
-        "title": "Socks to Be You",
-        "desc": "Whichever player has the most colorful socks drinks",
+        "title": {
+            en: "Socks to Be You",
+            nl: "Sokken zijn jouw ding"
+        },
+        "desc": {
+            en: "Whichever player has the most colorful socks drinks",
+            nl: "De speler met de meest kleurrijke sokken moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "🔋",
-        "title": "1% Gang",
-        "desc": "Whichever player's phone battery is the lowest drinks",
+        "title": {
+            en: "1% Gang",
+            nl: "1% Bende"
+        },
+        "desc": {
+            en: "Whichever player's phone battery is the lowest drinks",
+            nl: "De speler met de laagste telefoonbatterij moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "👆",
-        "title": "Karma Farming",
-        "desc": "Whichever player has the most Reddit karma drinks",
+        "title": {
+            en: "Karma Farming",
+            nl: "Karma Oogsten"
+        },
+        "desc": {
+            en: "Whichever player has the most Reddit karma drinks",
+            nl: "De speler met de meeste Reddit karma moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "🎷",
-        "title": "Saxophone Guy",
-        "desc": "Whichever player knows how to play the most instruments drinks",
+        "title": {
+            en: "Saxophone Guy",
+            nl: "Saxofoonman"
+        },
+        "desc": {
+            en: "Whichever player knows how to play the most instruments drinks",
+            nl: "De speler die de meeste instrumenten kan bespelen moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "💻",
-        "title": "Derp",
-        "desc": "Every player names a meme, everbody but the player who named the oldest meme drinks (check on knowyourmeme.com if necessary)",
+        "title": {
+            en: "Derp",
+            nl: "Derp"
+        },
+        "desc": {
+            en: "Every player names a meme, everybody but the player who named the oldest meme drinks (check on knowyourmeme.com if necessary)",
+            nl: "Elke speler noemt een meme, iedereen behalve de speler die de oudste meme noemde moet drinken (check knowyourmeme.com indien nodig)"
+        },
         "type": "Default"
     },
     {
         "emoji": "📧",
-        "title": "You've Got Mail",
-        "desc": "Whichever player has the most unread emails drinks",
+        "title": {
+            en: "You've Got Mail",
+            nl: "Je hebt post"
+        },
+        "desc": {
+            en: "Whichever player has the most unread emails drinks",
+            nl: "De speler met de meeste ongelezen e-mails moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "🌿",
-        "title": "Green Thumb",
-        "desc": "Whichever player has the most plants in their home drinks",
+        "title": {
+            en: "Green Thumb",
+            nl: "Groene vingers"
+        },
+        "desc": {
+            en: "Whichever player has the most plants in their home drinks",
+            nl: "De speler met de meeste planten in huis moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "👃",
-        "title": "Nose Goes!",
-        "desc": "Every player must touch their nose, last person to do so drinks",
+        "title": {
+            en: "Nose Goes!",
+            nl: "Wie het laatst zijn neus aanraakt!"
+        },
+        "desc": {
+            en: "Every player must touch their nose, last person to do so drinks",
+            nl: "Elke speler moet zijn neus aanraken, de laatste persoon die dit doet moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "💍",
-        "title": "Bejeweled",
-        "desc": "Whichever player is wearing the most jewlery drinks",
+        "title": {
+            en: "Bejeweled",
+            nl: "Bejuweled"
+        },
+        "desc": {
+            en: "Whichever player is wearing the most jewelry drinks",
+            nl: "De speler die de meeste sieraden draagt moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "💄",
-        "title": "True Beauty",
-        "desc": "Whichever player is wearing the most makeup drinks",
+        "title": {
+            en: "True Beauty",
+            nl: "Ware schoonheid"
+        },
+        "desc": {
+            en: "Whichever player is wearing the most makeup drinks",
+            nl: "De speler die de meeste make-up draagt moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "📱",
-        "title": "Clutter Expert",
-        "desc": "Whichever player has the most tabs open on their phone drinks",
+        "title": {
+            en: "Clutter Expert",
+            nl: "Rommelexpert"
+        },
+        "desc": {
+            en: "Whichever player has the most tabs open on their phone drinks",
+            nl: "De speler met de meeste open tabbladen op hun telefoon moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "🥃",
-        "title": "Freebie",
-        "desc": "Everybody, except for the player drinking the strongest drink out of the group, drinks",
+        "title": {
+            en: "Freebie",
+            nl: "Gratis rondje"
+        },
+        "desc": {
+            en: "Everybody, except for the player drinking the strongest drink out of the group, drinks",
+            nl: "Iedereen, behalve de speler die de sterkste drank van de groep drinkt, moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "⌚",
-        "title": "Happy Hour",
-        "desc": "If its after 5pm, take a drink!",
+        "title": {
+            en: "Happy Hour",
+            nl: "Happy Hour"
+        },
+        "desc": {
+            en: "If its after 5pm, take a drink!",
+            nl: "Als het na 17:00 uur is, neem een slok!"
+        },
         "type": "Default"
     },
     {
         "emoji": "⛱",
-        "title": "Nice Tan",
-        "desc": "Whichever player is the most tanned drinks",
+        "title": {
+            en: "Nice Tan",
+            nl: "Mooie bruine kleur"
+        },
+        "desc": {
+            en: "Whichever player is the most tanned drinks",
+            nl: "De meest gebruinde speler moet drinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "🤏",
-        "title": "Shortest Name",
-        "desc": "Whichever player has the shortest first name drinks",
-        "type": "Default"
+        "title": {
+            en: "Shortest Name",
+            nl: "Kortste naam"
+        },
+        "desc": {
+            en: "Whichever player has the shortest first name drinks",
+            nl: "De speler met de kortste voornaam moet drinken",
+        }
     },
     {
         "emoji": "👢",
-        "title": "You Know What They Say",
-        "desc": "Whichever player has the largest shoe size drinks",
+        "title": {
+            en: "You Know What They Say",
+            nl: "Je weet wat ze zeggen"
+        },
+        "desc": {
+            en: "Whichever player has the largest shoe size drinks",
+            nl: "Degene met de grootste schoenmaat moet een slok nemen"
+        },
         "type": "Default"
     },
     {
         "emoji": "🎮",
-        "title": "Get a 1-Up Bro",
-        "desc": "Whichever player has the most hours in a video game drinks",
+        "title": {
+            en: "Get a 1-Up Bro",
+            nl: "Gameverslaving?"
+        },
+        "desc": {
+            en: "Whichever player has the most hours in a video game drinks",
+            nl: "Degene die de meeste uren per week gamed moet een slok nemen"
+        },
         "type": "Default"
     },
     {
         "emoji": "📋",
-        "title": "Clippy Clippy",
-        "desc": "%player_name% must show what is currently copied to their phone or computer's clipboard, otherwise drink",
+        "title": {
+            en: "Clippy Clippy",
+            nl: "Ik heb niks te verbergen"
+        },
+        "desc": {
+            en: "%player_name% must show what is currently copied to their phone or computer's clipboard, otherwise drink",
+            nl: "%player_name% moet laten zien wat er op dit moment op het clipboard van zijn/haar telefoon of computer staat, of twee slokken nemen"
+        },
         "type": "Default"
     },
     {
         "emoji": "🤡",
-        "title": "Honk Honk",
-        "desc": "%player_name% describes a recent embarassing thing that happened to them, otherwise drink",
+        "title": {
+            en: "Honk Honk",
+            nl: "Toet Toet"
+        },
+        "desc": {
+            en: "%player_name% describes a recent embarassing thing that happened to them, otherwise drink",
+            nl: "%player_name% moet omschrijven wat het ergste is wat hem/haar ooit is overkomen"
+        },
         "type": "Default"
     },
     {
         "emoji": "🕷",
-        "title": "Alcoholophobia",
-        "desc": "Everybody shares their irrational fears, the player with the strangest fear drinks",
+        "title": {
+            en: "Alcoholophobia",
+            nl: "Alcoholophobia"
+        },
+        "desc": {
+            en: "Everybody shares their irrational fears, the player with the strangest fear drinks",
+            nl: "Iedereen deelt zijn grootste, vreemdste angst, degene met de vreemdste angst drinkt"
+        },
         "type": "Default"
     },
     {
         "emoji": "😭",
-        "title": "Bwah",
-        "desc": "%player_name% pretends to cry, the other players deem whether or not it was believable enough, if not, drink",
+        "title": {
+            en: "Bwah",
+            nl: "Bwah"
+        },
+        "desc": {
+            en: "%player_name% pretends to cry, the other players deem whether or not it was believable enough, if not, drink",
+            nl: "%player_name% doet alsof hij huilt, als de rest niet overtuigd is moet hij een slok nemen"
+        },
         "type": "Default"
     },
     {
         "emoji": "👄",
-        "title": "Red Lips",
-        "desc": "Whichever player has the reddest lips drinks",
+        "title": {
+            en: "Red Lips",
+            nl: 'Rode lippen'
+        },
+        "desc": {
+            en: "Whichever player has the reddest lips drinks",
+            nl: 'Degene met de roodste lippen moet een slok nemen'
+        },
         "type": "Default"
     },
     {
         "emoji": "🤠",
-        "title": "Yeehaw",
-        "desc": "%player_name% must attempt a Texan accent or finish their drink",
+        "title": {
+            en: "Yeehaw",
+            nl: "Yeehaw"
+        },
+        "desc": {
+            en: "%player_name% must attempt a Texan accent or finish their drink",
+            nl: "%player_name% moet een Texaans accent opzetten, of zijn drankje opdrinken"
+        },
         "type": "Default"
     },
     {
         "emoji": "🙈",
-        "title": "Blind",
-        "desc": "%player_name% takes a drink with their eyes closed",
+        "title": {
+            en: "Blind",
+            nl: "Blind"
+        },
+        "desc": {
+            en: "%player_name% takes a drink with their eyes closed",
+            nl: "%player_name% moet NU zijn ogen sluiten en een slok nemen"
+        },
         "type": "Default"
     },
     {
         "emoji": "💯",
-        "title": "Smartass",
-        "desc": "Whichever player had the best grades in highschool drinks",
+        "title": {
+            en: "Smartass",
+            nl: 'NERD!'
+        },
+        "desc": {
+            en: "Whichever player had the best grades in highschool drinks",
+            nl: 'Degene met de hoogste cijfers op de middelbare moet een slok nemen'
+        },
         "type": "Default"
     },
     {
         "emoji": "👇",
-        "title": "Dumbass",
-        "desc": "Whichever player had the worst grades in highschool drinks",
+        "title": {
+            en: "Dumbass",
+            nl: 'Sukkel!'
+        },
+        "desc": {
+            en: "Whichever player had the worst grades in highschool drinks",
+            nl: 'Degene met de slechtste cijfers op de middelbare moet een slok nemen'
+        },
         "type": "Default"
     },
     {
@@ -713,9 +1083,17 @@ export default [
         "type": "Default"
     },
     {
-        "emoji": "🙆‍♂️",
-        "title": "Skyscraper",
-        "desc": "Tallest player drinks",
+        "emoji": "🌃",
+        "title": {
+            en: "Skyscraper",
+            nl: "Wolkenkrabber"
+        },
+        "desc": {
+            en: "Tallest player drinks",
+            nl: "Langste speler moet drinken"
+        },
         "type": "Default"
     }
 ]
+
+

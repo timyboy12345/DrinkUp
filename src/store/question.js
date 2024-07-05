@@ -46,7 +46,7 @@ export const useQuestionStore = defineStore('questions', {
         nextQuestion(playerData) {
             this.activeQuestion = this.questions.pop();
 
-            switch (this.activeQuestion.getQuestionType) {}
+            // switch (this.activeQuestion.getQuestionType) {}
             this.activeQuestion.selectQuestion(playerData);
             return this.activeQuestion;
         },

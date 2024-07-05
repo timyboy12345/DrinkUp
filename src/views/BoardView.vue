@@ -56,6 +56,10 @@
       </DrinkUpButton>
     </div>
 
+    <div v-if="step === 'rolling'" class="text-2xl font-google">
+      {{ diceStep }}
+    </div>
+
     <div v-if="step === 'rolled'" class="text-2xl font-google">
       {{ rolled ?? 'X' }} Gerold
     </div>
@@ -76,7 +80,8 @@
             :class="[tileType(playerStore.getActivePlayer.position).border, tileType(playerStore.getActivePlayer.position).background]"
             class="text-center relative flex flex-col items-center p-4 z-10 border-4 bg-white rounded-lg w-80 h-2/3">
 
-          <component @next-player="nextPlayer" @ready-for-next-player="readyForNextPlayer = true" :data="modalData" :is="cardComponentName"/>
+          <component @next-player="nextPlayer" @ready-for-next-player="readyForNextPlayer = true" :data="modalData"
+                     :is="cardComponentName"/>
 
           <Transition name="fade">
             <DrinkUpButton v-show="readyForNextPlayer" type="white" class="absolute bottom-8" @click="nextPlayer">
@@ -87,6 +92,43 @@
       </Transition>
     </div>
   </Transition>
+
+  <div class="text-right flex flex-col justify-between items-end absolute right-4 h-full py-4">
+    <div class="flex flex-col items-end">
+      <div :class="{'opacity-50': !p.active}" class="transition duration-100 flex flex-row items-center text-md"
+           v-for="p in playerStore.players">
+        {{ p.name }}
+        <div :class="getPlayerBG(p.color)" class="ml-2 w-4 h-4 rounded"></div>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-end opacity-50 hover:opacity-100 transition duration-100">
+      <div class="flex flex-row items-center text-md">
+        Minigame
+        <div class="ml-2 w-4 h-4 rounded bg-orange-500"></div>
+      </div>
+      <div class="flex flex-row items-center text-md">
+        Challenge
+        <div class="ml-2 w-4 h-4 rounded bg-blue-400"></div>
+      </div>
+      <div class="flex flex-row items-center text-md">
+        Doen of Waarheid
+        <div class="ml-2 w-4 h-4 rounded bg-red-500"></div>
+      </div>
+      <div class="flex flex-row items-center text-md">
+        Rule
+        <div class="ml-2 w-4 h-4 rounded bg-green-500"></div>
+      </div>
+      <div class="flex flex-row items-center text-md">
+        Surprise
+        <div class="ml-2 w-4 h-4 rounded bg-purple-500"></div>
+      </div>
+      <div class="flex flex-row items-center text-md">
+        Drinken
+        <div class="ml-2 w-4 h-4 rounded bg-yellow-400"></div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -126,6 +168,7 @@ export default {
       columns: 12,
       step: null,
       rolled: null,
+      diceStep: 1,
       modalData: null,
       readyForNextPlayer: false,
     }
@@ -230,9 +273,31 @@ export default {
       }
     },
     rollDice() {
-      this.step = 'rolled';
-
+      this.step = 'rolling';
       const rolled = BoardService.roll();
+
+      this.rollStep(rolled);
+    },
+    rollStep(endWith, step = 0, steps = 20) {
+      const max = 6;
+      const min = 1;
+      this.diceStep = Math.floor(Math.random() * (max - min + 1)) + min;
+
+      if (step >= steps) {
+        // this.finishRoll(endWith);
+        this.diceStep = endWith;
+      }
+
+      setTimeout(() => {
+        if (step >= steps) {
+          this.finishRoll(endWith);
+        } else {
+          this.rollStep(endWith, step + 1);
+        }
+      }, 10 + (Math.pow(step, 2)))
+    },
+    finishRoll(rolled) {
+      this.step = 'rolled';
 
       this.rolled = rolled;
       this.setActivePlayerTile(rolled, this.totalTiles);
@@ -259,6 +324,7 @@ export default {
 }
 </script>
 
+<!--suppress CssUnusedSymbol -->
 <style>
 .fade-enter-active,
 .fade-leave-active {

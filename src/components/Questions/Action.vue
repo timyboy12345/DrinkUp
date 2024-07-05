@@ -18,8 +18,8 @@
 
 <script>
 import DrinkUpButton from "../DrinkUpButton.vue";
-import {usePlayerStore} from "../../store/players";
-import {useQuestionStore} from "../../store/question";
+import {usePlayerStore} from "@/store/players";
+import {useQuestionStore} from "@/store/question";
 import filterMixin from "../../mixins/filterMixin";
 
 export default {
@@ -41,7 +41,7 @@ export default {
   computed: {
     playerName() {
       const playerId = this.questionStore.currentQuestion.getPlayerId();
-      return this.playerStore.getPlayerById(playerId);
+      return this.playerStore.getPlayerById(playerId).name;
     },
     action() {
       let action = this.questionStore.currentQuestion.getAction();

@@ -30,9 +30,9 @@ export class ActionModel extends QuestionInterface {
     }
 
     selectQuestion(playerData) {
-        if (this.hasPlayer) {
-            this.setPlayerId(_.sample(playerData));
-        }
+        // if (this.hasPlayer) {
+        this.setPlayerId(_.sample(playerData).name);
+        // }
     }
 
     setAction(action) {

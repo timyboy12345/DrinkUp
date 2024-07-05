@@ -21,8 +21,13 @@ export default {
 
 <template>
   <div class="flex flex-col items-center justify-center w-full h-full">
-    <div>
-      {{ locale(data.rule.rule) }}
+    <div class="flex flex-row items-center mb-8 font-google text-4xl font-bold">
+      <span class="text-6xl mr-2">{{ data.surprise.emoji }}</span>
+      {{ locale(data.surprise.title) }}
+    </div>
+
+    <div class="opacity-80">
+      {{ locale(data.surprise.description) }}
     </div>
   </div>
 </template>
