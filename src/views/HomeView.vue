@@ -1,77 +1,56 @@
 <template>
-  <div class="flex flex-row pb-8">
-    <div class="lg:max-w-4xl xl:max-w-6xl flex-grow mx-4 lg:mx-auto mt-16 flex flex-col items-center text-center">
+  <div class="mx-8 md:max-w-2xl lg:max-w-4xl md:mx-auto flex content-center flex-col pb-8">
+    <div class="flex-grow mx-4 lg:mx-auto mt-16 flex flex-col items-center text-center">
       <h1 class="text-4xl font-bold font-google">DrinkUp</h1>
-      <h3 class="opacity-70 mb-8">Maakt je avond een stuk gezelliger!</h3>
+      <h3 class="opacity-70 mb-8">Alles wat je ooit hebt willen weten over de gaafste drankspellen.</h3>
+    </div>
 
-      <p class="mb-8 opacity-80">
-        Voer hieronder de namen van je vrienden in en start een spel!
-      </p>
+    <div v-if="drinkingGames" class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <DrinkingGameCard
+          :game="post"
+          v-for="post in drinkingGames"
+          :key="post.id"
+      />
 
-      <div class="text-left flex flex-col mb-8">
-        <label for="name" class="mb-1 text-md opacity-50">Naam</label>
-        <input class="rounded py-2 px-4 text-black" id="name" placeholder="Naam invoeren" v-model="playerName"
-               type="text" @keyup.enter="handleEnterPress">
-        <p class="text-xs mt-1 opacity-40">Voer een naam in en druk op enter.</p>
-
-        <ul class="mt-4 flex flex-col gap-y-2" v-if="playerStore.getPlayers.length > 0">
-          <li v-for="player of playerStore.getPlayers">
-            <div class="flex flex-row">
-              <XMarkIcon @click="handleRemovePlayer(player.name)" class="transition duration-100 p-1 w-6 h-6 rounded bg-amber-600 mr-2 cursor-pointer opacity-50 hover:opacity-100"></XMarkIcon>
-              {{ player.name }}
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      <div class="flex flex-col">
-        <div class="text-sm opacity-60 mb-2">
-          Je speelt een spel met {{ playerStore.getPlayers.length }} spelers.
-        </div>
-
-        <div class="flex items-center gap-4">
-          <DrinkUpButton to="/game" :disabled="playerStore.getPlayers.length === 0">
-            <BookmarkIcon class="w-6 h-6 mr-2"/>
-            Kaartspel
-          </DrinkUpButton>
-
-          <DrinkUpButton to="/board" :disabled="playerStore.getPlayers.length === 0">
-            <LifebuoyIcon class="w-6 h-6 mr-2"/>
-            Bordspel
-          </DrinkUpButton>
-        </div>
-      </div>
+      <RouterLink to="/drankspellen"
+                  class="py-4 opacity-60 border rounded hover:bg-stone-800 transition-colors duration-100 border-stone-800 flex flex-col items-center justify-center">
+        Alle drankspellen
+        <ArrowRightIcon class="w-8 mt-4" />
+      </RouterLink>
     </div>
   </div>
 </template>
 
 <script>
-import DrinkUpButton from "../components/DrinkUpButton.vue";
-import {UserIcon, BookmarkIcon, XMarkIcon, LifebuoyIcon} from "@heroicons/vue/24/outline";
-import {usePlayerStore} from "@/store/players";
-import {mapActions} from "pinia";
+import DrinkingGameCard from "@/components/Card/DrinkingGameCard.vue";
+import {ArrowRightIcon} from "@heroicons/vue/24/outline";
 
 export default {
-  components: {DrinkUpButton, BookmarkIcon, UserIcon, XMarkIcon, LifebuoyIcon},
+  components: {DrinkingGameCard, ArrowRightIcon},
   data() {
     return {
-      playerName: ''
+      baseUrl: 'https://drinkup.arendz.nl',
+      drinkingGames: null,
+      posts: null,
     }
-  },
-  setup() {
-    const playerStore = usePlayerStore();
-
-    return {playerStore};
   },
   methods: {
-    ...mapActions(usePlayerStore, ['addPlayer', 'removePlayer']),
-    handleEnterPress() {
-      this.addPlayer(this.playerName);
-      this.playerName = '';
+    async loadDrinkingGames() {
+      const rawResponse = await fetch(`${this.baseUrl}/items/drinking_games/`);
+
+      const response = await rawResponse.json();
+      this.drinkingGames = response.data;
     },
-    handleRemovePlayer(playerName) {
-      this.removePlayer(playerName);
+    async loadPosts() {
+      const rawResponse = await fetch(`${this.baseUrl}/items/posts/`);
+
+      const response = await rawResponse.json();
+      this.posts = response.data;
     }
+  },
+  async created() {
+    this.loadDrinkingGames();
+    this.loadPosts();
   }
 }
 </script>

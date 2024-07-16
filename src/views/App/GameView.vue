@@ -53,14 +53,14 @@
 </template>
 
 <script>
-import DrinkUpButton from "../components/DrinkUpButton.vue";
-import {usePlayerStore} from "../store/players";
-import {useQuestionStore} from "../store/question";
+import DrinkUpButton from "../../components/DrinkUpButton.vue";
+import {usePlayerStore} from "@/store/players";
+import {useQuestionStore} from "@/store/question";
 import {mapActions} from "pinia";
-import QuestionTypeEnum from "../enums/QuestionTypeEnum";
-import TruthOrDare from '../components/Questions/TruthOrDare.vue';
-import Action from '../components/Questions/Action.vue';
-import Rule from '../components/Questions/Rule.vue';
+import QuestionTypeEnum from "../../enums/QuestionTypeEnum";
+import TruthOrDare from '../../components/Questions/TruthOrDare.vue';
+import Action from '../../components/Questions/Action.vue';
+import Rule from '../../components/Questions/Rule.vue';
 
 export default {
   components: {DrinkUpButton, TruthOrDare, Action, Rule},

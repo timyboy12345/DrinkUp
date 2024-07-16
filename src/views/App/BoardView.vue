@@ -132,14 +132,14 @@
 </template>
 
 <script>
-import DrinkUpButton from "../components/DrinkUpButton.vue";
+import DrinkUpButton from "../../components/DrinkUpButton.vue";
 import {usePlayerStore} from "@/store/players";
 import {useQuestionStore} from "@/store/question";
 import {useGameStore} from "@/store/game";
 import {mapActions} from "pinia";
-import TruthOrDare from '../components/Questions/TruthOrDare.vue';
-import Action from '../components/Questions/Action.vue';
-import Rule from '../components/Questions/Rule.vue';
+import TruthOrDare from '../../components/Questions/TruthOrDare.vue';
+import Action from '../../components/Questions/Action.vue';
+import Rule from '../../components/Questions/Rule.vue';
 import {BoardService} from '@/services';
 import CardTypeEnum from "@/enums/CardTypeEnum";
 import TruthOrDareComponent from "@/components/Board/TruthOrDareComponent.vue";
