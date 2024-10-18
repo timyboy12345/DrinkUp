@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-8 lg:mx-auto lg:max-w-4xl h-screen flex flex-col items-center justify-center">
+  <div class="mx-6 lg:mx-auto lg:max-w-4xl h-screen flex flex-col items-center justify-center">
     <div v-if="!questionStore.isInitialized">Vragen worden geladen...</div>
 
     <div class="text-center flex flex-col items-center"

@@ -17,7 +17,8 @@
         <ul class="mt-4 flex flex-col gap-y-2" v-if="playerStore.getPlayers.length > 0">
           <li v-for="player of playerStore.getPlayers">
             <div class="flex flex-row">
-              <XMarkIcon @click="handleRemovePlayer(player.name)" class="transition duration-100 p-1 w-6 h-6 rounded bg-amber-600 mr-2 cursor-pointer opacity-50 hover:opacity-100"></XMarkIcon>
+              <XMarkIcon @click="handleRemovePlayer(player.name)"
+                         class="transition duration-100 p-1 w-6 h-6 rounded bg-amber-600 mr-2 cursor-pointer opacity-50 hover:opacity-100"></XMarkIcon>
               {{ player.name }}
             </div>
           </li>
@@ -42,6 +43,12 @@
         </div>
       </div>
     </div>
+
+    <RouterLink
+        class="absolute left-4 bottom-4 text-xs opacity-40 hover:opacity-100 cursor-pointer transition duration-100"
+        to="/">
+      Naar de homepagina
+    </RouterLink>
   </div>
 </template>
 

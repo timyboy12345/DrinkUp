@@ -1,8 +1,6 @@
 # DrinkUp
 This Vue3 project creates a random game filled with fun mini-games, questions, do's and dares.
 
-
-
 ## Project Setup
 
 ```sh

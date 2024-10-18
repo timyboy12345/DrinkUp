@@ -1,21 +1,38 @@
 <script setup>
-import {RouterLink, RouterView} from 'vue-router'
+import {RouterLink, RouterView, useRoute} from 'vue-router'
+import {useHead} from "@unhead/vue";
+const route = useRoute();
 
 function showHeader() {
-  return this.$route.name !== 'home' && !this.$route.name.includes('app')
+  return route && route.name && !route.name.includes('app');
+  // return routeName && routeName.value && !routeName.value.includes('app');
 }
+
+// watch(() => route.name, () => {
+  // console.log(route.name);
+  // routeName.value = route.name;
+// })
+
+// all the goodies
+useHead({
+  // Titles
+  title: 'DrinkUp',
+  titleTemplate: '%s %separator %siteName',
+  templateParams: { separator: '|', siteName: 'DrinkUp' },
+})
 </script>
 
 <template>
-  <header v-if="showHeader" class="w-full py-4 px-8">
+  <header v-if="showHeader()" class="w-full py-4 px-4 md:px-6 lg:px-8">
     <div class="wrapper">
-      <nav class="break-normal font-google flex lg:flex-row gap-x-6">
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/drankspellen">Drankspellen</RouterLink>
-        <!--        <RouterLink to="/posts">Artikelen</RouterLink>-->
-        <RouterLink
-            class="bg-amber-500 hover:bg-amber-600 transition-colors duration-100 ml-auto py-1 px-4 rounded text-black"
-            to="/app">Bordspel spelen
+      <nav class="font-google grid gap-y-2 lg:gap-y-0 sm:flex gap-x-2 lg:gap-x-6">
+        <RouterLink class="rounded py-1 bg-opacity-10 transition duration-100 px-2 lg:px-4 hover:bg-gray-50 hover:bg-opacity-10" activeClass="bg-gray-100" to="/">Home</RouterLink>
+        <RouterLink class="rounded py-1 bg-opacity-10 transition duration-100 px-2 lg:px-4 hover:bg-gray-50 hover:bg-opacity-10" activeClass="bg-gray-100" to="/drankspellen">Drankspellen</RouterLink>
+<!--        <RouterLink class="rounded py-1 bg-opacity-10 transition duration-100 px-2 lg:px-4 hover:bg-gray-50 hover:bg-opacity-10" activeClass="bg-gray-100" to="/artikelen">Artikelen</RouterLink>-->
+
+        <RouterLink activeClass="bg-gray-10"
+            class="bg-amber-500 hover:bg-amber-600 transition-colors duration-100 ml-auto py-1 px-2 lg:px-4 rounded text-black"
+            to="/app">Drankspel Starten
         </RouterLink>
       </nav>
     </div>
