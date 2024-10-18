@@ -116,7 +116,13 @@ export default {
   },
   head() {
     return {
-      title: this.game ? this.game.title : ''
+      title: this.game ? this.game.title : '',
+      meta: [
+        {
+          name: 'description',
+          content: this.game ? this.game.description : '',
+        },
+      ],
     }
   }
 }

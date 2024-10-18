@@ -64,7 +64,7 @@ export default {
     meta: [
       {
         name: 'description',
-        content: 'Dit is een test',
+        content: 'Met DrinkUp heb je nooit meer een saaie avond! Lees alle regels van jouw favoriete drankspellen, of speel een van onze drankspellen met je vrienden.',
       },
     ],
   }

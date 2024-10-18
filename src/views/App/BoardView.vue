@@ -321,6 +321,9 @@ export default {
       this.step = 'roll';
     }
   },
+  head: {
+    title: "BordSpel"
+  }
 }
 </script>
 

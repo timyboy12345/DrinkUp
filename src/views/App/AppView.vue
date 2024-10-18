@@ -79,6 +79,15 @@ export default {
     handleRemovePlayer(playerName) {
       this.removePlayer(playerName);
     }
+  },
+  head: {
+    title: 'Start een Drankspel',
+    meta: [
+      {
+        name: 'description',
+        content: 'Start hier een nieuw drankspel, voer de namen van al jouw vrienden in en kies een van onze spellen om te spelen. Plezier gegarandeerd!',
+      },
+    ],
   }
 }
 </script>

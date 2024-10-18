@@ -102,6 +102,9 @@ export default {
           return 'question';
       }
     }
+  },
+  head: {
+    title: "Kaartspel"
   }
 }
 </script>
