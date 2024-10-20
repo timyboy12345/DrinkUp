@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import AppView from '../views/App/AppView.vue'
 import DrinkingGamesView from "@/views/DrinkingGames/DrinkingGamesView.vue";
 import DrinkingGameView from "@/views/DrinkingGames/DrinkingGameView.vue";
+import TagView from "@/views/Tags/TagView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,6 +22,11 @@ const router = createRouter({
       path: '/drankspellen/:slug',
       name: 'drinking-games-show',
       component: DrinkingGameView,
+    },
+    {
+      path: '/tags/:slug',
+      name: 'tags-show',
+      component: TagView,
     },
     {
       path: '/app',

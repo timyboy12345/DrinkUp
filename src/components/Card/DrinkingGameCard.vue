@@ -20,6 +20,12 @@ export default {
     <div class="p-4">
       <h3 class="font-google">{{ game.title }}</h3>
       <p class="text-sm opacity-50">{{ game.description }}</p>
+
+      <div class="flex gap-2 text-xs mt-2" v-if="game.tags">
+        <div class="rounded py-1 px-2 bg-amber-500 text-white" v-for="tag of game.tags">
+          {{ tag.drinkup_tags_id.title }}
+        </div>
+      </div>
     </div>
   </RouterLink>
 </template>
