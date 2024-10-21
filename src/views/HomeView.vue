@@ -26,12 +26,39 @@
     <Loader v-else>Drankspellen worden geladen...</Loader>
 
     <div class="text-gray-300">
-      DrinkUp helpt je met het vinden van het perfecte drankspel op het juiste moment. Gebruik onze filters om te zoeken op specifieke spellen, of struin door de tientallen spellen die we hebben gedocumenteerd om te kijken welk spel jullie volgende keer gaan spelen.
+      DrinkUp helpt je met het vinden van het perfecte drankspel op het juiste moment. Gebruik onze filters om te zoeken
+      op specifieke spellen, of struin door de tientallen spellen die we hebben gedocumenteerd om te kijken welk spel
+      jullie volgende keer gaan spelen.
     </div>
 
     <div v-if="tags && tags.length > 0" class="flex gap-4 overflow-y-hidden overflow-x-scroll text-nowrap">
-      <RouterLink :to="`/tags/${tag.slug}`" class="rounded py-2 px-4 bg-amber-500 hover:bg-amber-600 transition duration-100 text-white" v-for="tag in tags">
+      <RouterLink :to="`/tags/${tag.slug}`"
+                  class="rounded py-2 px-4 bg-amber-500 hover:bg-amber-600 transition duration-100 text-white"
+                  v-for="tag in tags">
         {{ tag.title }}
+      </RouterLink>
+    </div>
+
+    <div class="text-gray-300">
+      Ook helemaal klaar met dat eeuwenoude
+      <RouterLink to="/drankspellen/juffen" class="underline text-amber-500 hover:no-underline">Juffen</RouterLink> of
+      <RouterLink to="/drankspellen/beerpong" class="underline text-amber-500 hover:no-underline">Beerpong</RouterLink>? Op DrinkUp vindt je talloze nieuwe drankspellen om jullie avond extra gezellig te maken. Van simpele spellen als
+      <RouterLink to="/drankspellen/fuck-the-dealer" class="underline text-amber-500 hover:no-underline">Fuck the Dealer</RouterLink> tot complexere drankspellen als
+      <RouterLink to="/drankspellen/paardenrace" class="underline text-amber-500 hover:no-underline">Paardenrace</RouterLink>. Je vindt
+      <RouterLink to="/drankspellen" class="underline text-amber-500 hover:no-underline">alle drankspellen</RouterLink>
+      in een duidelijk overzicht.
+    </div>
+
+    <div class="flex flex-col text-center">
+      <h2 class="font-google text-amber-500 text-xl">Online Drankspellen Spelen</h2>
+      <div class="text-gray-300">Via DrinkUp kan je niet alleen leren over verschillende offline drankspellen, je kan
+        via onze site ook
+        meerdere online drankspellen spelen. Van simpele kaartspellen tot complexere bordspellen, allemaal op dit
+        scherm.
+      </div>
+      <RouterLink to="/app"
+                  class="mt-2 mx-auto rounded py-2 px-4 bg-amber-500 hover:bg-amber-600 transition duration-100 text-white">
+        Online Drankspel Starten
       </RouterLink>
     </div>
   </div>

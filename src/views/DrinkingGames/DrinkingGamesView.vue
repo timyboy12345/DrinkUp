@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-6 md:max-w-2xl lg:max-w-4xl md:mx-auto flex content-center flex-col gap-8">
+  <div class="mx-6 md:max-w-2xl lg:max-w-4xl md:mx-auto flex content-center flex-col pb-8 gap-8">
     <div class="flex flex-col">
       <h1 class="text-4xl font-bold font-google">Alle Drankspellen</h1>
       <p class="opacity-70 mt-2">Heb je een probleem het juiste drankspel te vinden? Hieronder vindt je alle

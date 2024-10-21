@@ -12,7 +12,7 @@ export default {
   >
     <img
         :alt="`Foto van ${game.title}`"
-        class="h-40 object-cover"
+        class="bg-stone-800 h-40 object-cover"
         v-if="game.thumbnail"
         :src="`https://data.arendz.nl/assets/${game.thumbnail.filename_disk}?height=400&width=400&quality=80`"
     >

@@ -3,7 +3,7 @@
     <div class="flex flex-col gap-8 mt-4 items-center">
       <img
           :alt="`Foto van ${game.title}`"
-          class="object-cover rounded overflow-hidden h-52 sm:h-64 md:h-72 w-full sm:max-w-sm"
+          class="border-none object-cover rounded overflow-hidden h-52 sm:h-64 md:h-72 w-full sm:max-w-sm bg-stone-800"
           v-if="game.thumbnail"
           :src="`https://data.arendz.nl/assets/${game.thumbnail.filename_disk}?height=800&width=900&quality=100`"
       >
@@ -83,7 +83,7 @@
         </div>
       </div>
 
-      <div class="text-lg mt-2" v-if="game.tags">
+      <div class="text-lg mt-2" v-if="game.tags && game.tags.length > 0">
         <p class="text-sm opacity-60 mb-2">Dit spel heeft de volgende tags:</p>
 
         <div class="flex">

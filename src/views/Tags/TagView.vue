@@ -77,7 +77,7 @@ export default {
       meta: [
         {
           name: 'description',
-          content: this.tag ? this.tag.content : '',
+          content: this.tag ? this.tag.description : '',
         },
       ],
     }
