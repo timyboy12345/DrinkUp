@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-row pb-8">
     <div class="lg:max-w-4xl xl:max-w-6xl flex-grow mx-4 lg:mx-auto mt-16 flex flex-col items-center text-center">
-      <h1 class="text-4xl font-bold font-google">DrinkUp</h1>
+      <h1 class="text-4xl font-bold font-google">DrankSpellenWiki</h1>
       <h3 class="opacity-70 mb-8">Maakt je avond een stuk gezelliger!</h3>
 
       <p class="mb-8 opacity-80">
@@ -13,6 +13,10 @@
         <input class="rounded py-2 px-4 text-black" id="name" placeholder="Naam invoeren" v-model="playerName"
                type="text" @keyup.enter="handleEnterPress">
         <p class="text-xs mt-1 opacity-40">Voer een naam in en druk op enter.</p>
+
+        <div class="mt-4 text-sm" v-if="playerStore.getPlayers && playerStore.getPlayers.length === 0">
+          Nog geen spelers toegevoegd
+        </div>
 
         <ul class="mt-4 flex flex-col gap-y-2" v-if="playerStore.getPlayers.length > 0">
           <li v-for="player of playerStore.getPlayers">
@@ -44,11 +48,18 @@
       </div>
     </div>
 
-    <RouterLink
-        class="absolute left-4 bottom-4 text-xs opacity-40 hover:opacity-100 cursor-pointer transition duration-100"
-        to="/">
-      Naar de homepagina
-    </RouterLink>
+    <div class="absolute left-4 bottom-4 text-xs flex gap-x-4">
+      <RouterLink
+          class="opacity-40 hover:opacity-100 cursor-pointer transition duration-100"
+          to="/">
+        Naar de homepagina
+      </RouterLink>
+      <RouterLink
+          class="opacity-40 hover:opacity-100 cursor-pointer transition duration-100"
+          to="/app">
+        Info over online drankspellen
+      </RouterLink>
+    </div>
   </div>
 </template>
 

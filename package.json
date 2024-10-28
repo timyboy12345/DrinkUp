@@ -1,6 +1,6 @@
 {
   "name": "drinkup",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -11,6 +11,7 @@
     "@heroicons/vue": "^2.1.4",
     "@unhead/vue": "^1.11.10",
     "@vue/compiler-sfc": "^3.2.29",
+    "@vueuse/core": "^11.1.0",
     "axios": "^0.26.0",
     "jenesius-vue-modal": "^1.5.0",
     "leaflet": "^1.7.1",

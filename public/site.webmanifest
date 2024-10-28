@@ -1,6 +1,6 @@
 {
-  "name": "DrinkUp - Drankspellen ",
-  "short_name": "DrinkUp",
+  "name": "DrankSpellenWiki - Drankspellen voor elke avond",
+  "short_name": "DrankSpellenWiki",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",

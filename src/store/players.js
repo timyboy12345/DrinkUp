@@ -2,17 +2,18 @@ import {defineStore} from "pinia";
 
 export const usePlayerStore = defineStore('players', {
     state: () => ({
-        players: [{
-            active: false,
-            color: null,
-            name: 'Tim',
-            position: null
-        }, {
-            active: false,
-            color: null,
-            name: 'Piet',
-            position: null
-        }]
+        // players: [{
+        //     active: false,
+        //     color: null,
+        //     name: 'Tim',
+        //     position: null
+        // }, {
+        //     active: false,
+        //     color: null,
+        //     name: 'Piet',
+        //     position: null
+        // }]
+        players: []
     }),
     getters: {
         getPlayers: (state) => state.players,

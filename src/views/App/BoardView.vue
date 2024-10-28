@@ -322,7 +322,7 @@ export default {
     }
   },
   head: {
-    title: "BordSpel"
+    title: "Bordspel"
   }
 }
 </script>

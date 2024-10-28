@@ -7,43 +7,45 @@
         zoekt, of vindt jullie volgende favoriete drankspel.</p>
     </div>
 
-    <div v-if="tags && tags.length > 0" class="flex items-center gap-4 overflow-y-hidden overflow-x-scroll text-nowrap">
+    <div v-if="!isFetchingTags"
+         class="text-xs flex items-center gap-4 overflow-y-hidden overflow-x-scroll text-nowrap">
       <div class="opacity-60">Of gebruik een van de tags</div>
-      <RouterLink :to="`/tags/${tag.slug}`" class="rounded py-2 px-4 bg-amber-500 hover:bg-amber-600 transition duration-100 text-white" v-for="tag in tags">
+      <RouterLink :to="`/tags/${tag.slug}`"
+                  class="rounded py-1 px-2 bg-amber-500 hover:bg-amber-600 transition duration-100 text-white"
+                  v-for="tag in tags.data">
         {{ tag.title }}
       </RouterLink>
     </div>
 
-    <div v-if="drinkingGames" class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-      <DrinkingGameCard :game="drinkingGame" v-for="drinkingGame in drinkingGames"/>
+    <div v-if="!isFetchingGames" class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <DrinkingGameCard :game="drinkingGame" v-for="drinkingGame in drinkingGames.data"/>
     </div>
+
+    <Loader v-else>Drankspellen worden geladen</Loader>
   </div>
 </template>
 
-<script>
+<script lang="ts" setup>
 import DrinkingGameCard from "@/components/Card/DrinkingGameCard.vue";
+import {useFetch} from "@vueuse/core";
+import {useHead} from "@unhead/vue";
+import Loader from "@/components/Loader.vue";
 
-export default {
-  components: {DrinkingGameCard},
-  data() {
-    return {
-      drinkingGames: null,
-      tags: null,
-      baseUrl: 'https://data.arendz.nl',
-    }
-  },
-  methods: {},
-  async created() {
-    const gamesResponse = await fetch(`${this.baseUrl}/items/drinking_games/?fields[]=*,images.directus_files_id.*,thumbnail.*,tags.*.*`);
-    const tagsResponse = await fetch(`${this.baseUrl}/items/drinkup_tags`);
+const baseUrl = 'https://data.arendz.nl';
 
-    const games = await gamesResponse.json();
-    this.drinkingGames = games.data;
-    const tags = await tagsResponse.json();
-    this.tags = tags.data;
-  },
-  head: {
-    title: "Drankspellen"
-  }
-}
+const {
+  isFetching: isFetchingGames,
+  error: gamesError,
+  data: drinkingGames
+} = useFetch(`${baseUrl}/items/drinking_games/?fields[]=*,images.directus_files_id.*,thumbnail.*,tags.*.*`).get().json()
+
+const {
+  isFetching: isFetchingTags,
+  error: tagsError,
+  data: tags
+} = useFetch(`${baseUrl}/items/drinkup_tags`).get().json()
+
+useHead({
+  title: 'Drankspellen',
+})
 </script>

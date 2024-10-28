@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import AppView from '../views/App/AppView.vue'
+import AppDescriptionView from '../views/App/AppDescriptionView.vue'
 import DrinkingGamesView from "@/views/DrinkingGames/DrinkingGamesView.vue";
 import DrinkingGameView from "@/views/DrinkingGames/DrinkingGameView.vue";
 import TagView from "@/views/Tags/TagView.vue";
@@ -31,14 +31,16 @@ const router = createRouter({
     {
       path: '/app',
       name: 'app',
-      component: AppView
+      component: AppDescriptionView
+    },
+    {
+      path: '/app/start',
+      name: 'app-start',
+      component: () => import('../views/App/AppView.vue')
     },
     {
       path: '/app/game',
       name: 'app-game',
-      // route level code-splitting
-      // this generates a separate chunk (GameView.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/App/GameView.vue')
     },
     {
